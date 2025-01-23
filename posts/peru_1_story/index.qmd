@@ -1,0 +1,340 @@
+---
+title: "Efficiency of agroecological practices for cacao production in Peru"
+subtitle: ""
+author: 
+  - name: "Guillermo Orjuela Ramirez"
+    url: 
+    affiliation: Alliance Bioversity and CIAT
+    affiliation_url: https://alliancebioversityciat.org/
+date: 12/14/2024 
+date-format: "MMMM, YYYY"
+lang: en
+image: pics/featured.png
+execute: 
+  eval: true
+  echo: false
+  warning: false
+freeze: true
+format:
+  closeread-html:
+    css: story_peru.css
+    cr-style:
+      narrative-background-color-sidebar: "#000000"
+      narrative-text-color-sidebar: "#000000"
+      section-background-color: "#FFFFFF"
+      narrative-font-size: 14pt
+      narrative-font-family: Roboto
+    remove-header-space: false
+    debug-mode: false
+    embed-resources: true
+    linkcolor: tomato
+---
+
+Cacao cultivation is a critical livelihood for approximately 90,000 farmers across the 16 regions in Peru. These farmers face significant challenges: maintaining production levels without expanding agricultural land, decoupling crops from deforestation, and addressing climate change impacts such as water scarcity, extreme weather events, and pest and diseases proliferation.
+
+To address these challenges and maintain production levels, farmers use diverse agroecological practices.
+
+**But how efficient are these practices?** 
+
+\
+\
+
+::::{.cr-section layout="sidebar-left"}
+
+:::{#cr-fig_1}
+```{r fig_1, out.width="85%"}
+#| output: 'asis'
+#| # fig-asp: 1.2
+#| warning: false
+
+knitr::include_graphics("./pics/map_1.png")
+# ![map](./map_1.png){width=50%}
+```
+:::
+
+In 2023, we conducted a study in [**Ucayali**]{style="color:#a7c957;"} (Provinces of Padre Abad and Coronel Portillo), the third largest cacao-producing region in Peru. @cr-fig_1
+
+The study uses the ["Agroecological practices characterization survey"](https://hdl.handle.net/10568/139817) of the [CGIAR Initiative on Agroecology](https://www.cgiar.org/initiative/agroecology/) to assess the efficiency of agroecological practices in 654 cacao producers, in terms of resource use and output production. @cr-fig_1
+
+::::
+
+::::{.cr-section layout="overlay-center"}
+Let's take a look at what we found.
+::::
+
+::::{.cr-section layout="sidebar-left"}
+:::{#cr-fig_2}
+```{r fig_2}
+#| output: 'asis'
+#| #fig-asp: 1.2
+#| warning: false
+#| fig-width: 7
+#| fig-height: 6
+suppressMessages(library(openxlsx))
+suppressMessages(library(ggplot2))
+suppressMessages(library(tidyverse))
+suppressMessages(library(dplyr))
+suppressMessages(library(paletteer))
+
+# paletteer_d("nationalparkcolors::Acadia")
+
+cp_1 <- c("Ucayali" = "#FED789FF",
+          "San Martín" = "#023743FF",
+          "Junín" = "#72874EFF",
+          "Huánuco" = "#476F84FF",
+          "Other" = "gray70"
+)
+
+db_1 <- openxlsx::read.xlsx("./data_storytelling_peru.xlsx",
+                    sheet = "cacao_distrito")
+db_1 <- db_1 |> 
+  pivot_longer(cols = 2:10,
+               names_to = "var",
+               values_to = "val")
+db_1$var <- as.numeric(db_1$var)
+
+db_1 |>
+  ggplot(aes(x=var,y=val)) +
+  geom_line(aes(color=dist), linewidth=1.5) + 
+  theme_minimal() + 
+  labs(x=NULL, y=NULL,
+       title = "Cacao production by Districts",
+       subtitle = "Thousands of tons",
+       caption="Data source: Ministry of Agrarian Development and Irrigation, Peru.") +
+  guides(color = guide_legend(title = "Districts")) + 
+  scale_x_continuous(limits = c(2015, 2023), 
+                     expand = c(0, 0),
+                     breaks = seq(2015, 2023, by = 1)) + 
+  scale_y_continuous(limits = c(0, 70000), 
+                     expand = c(0, 0),
+                     breaks = seq(0, 70000, by = 10000)) + 
+  scale_color_manual(values = cp_1) +
+  theme(axis.title = element_text(size = 12),
+        plot.title = element_text(color = "grey30",
+                              face = "bold",
+                              size = 18),
+        plot.subtitle = element_text(color = "grey30",
+                              size = 16),
+        plot.title.position = "plot",
+    axis.text = element_text(size = 13, color = "grey30"),
+    axis.text.y = element_text(size = 13, color = "grey30"),
+    panel.border = element_blank(),
+    axis.line = element_line(color = "grey60"),
+    panel.grid.major.x = element_blank(),
+    panel.grid.minor.x = element_blank(),
+    panel.grid.major.y = element_blank(),
+    panel.grid.minor.y = element_blank(),
+    axis.ticks = element_blank(),
+    legend.position = "bottom",
+    axis.line.y.left = element_line(color = "black"),
+    axis.line.x.bottom = element_line(color = "black"),
+    plot.margin = unit(c(t = 0.3, r = 0.5, b = 0, l = 0.5), "cm"),
+    panel.spacing.x = unit(2, "lines")
+  ) 
+```
+:::
+
+Cacao production in Peru has increased in recent years, with four regions -[**San Martín**]{style="color:#023743FF;"}, [**Junín**]{style="color:#72874EFF;"}, [**Huánuco**]{style="color:#476F84FF;"}, and [**Ucayali**]{style="color:#FED789FF;"}- accounting for 80% of the country's total production (134,000 tons). @cr-fig_2
+
+Despite this overall growth, [**Ucayali**]{style="color:#FED789FF;"}, the third largest cacao-producing region, has experienced a production decline associated to high temperatures, low rainfall, and significant pest and disease outbreaks, which negatively impact their [**efficiency**]{style="color:#F8766D;"}. @cr-fig_2
+
+::::
+
+[**Efficiency**]{style="color:#F8766D;"} represents the achievement of maximum [output]{style="color:#F8766D;"} with a given amount of [inputs]{style="color:#F8766D;"}.
+
+[Inputs]{style="color:#F8766D;"} are fundamental production factors such as labor, land, and trees, while [outputs]{style="color:#F8766D;"} are the goods or services that are produced by combining inputs, in this case, the resulting cacao harvest.
+
+![](./pics/input_output.svg)
+
+Think of efficiency as how well a farmer can maximize the most out of their labor, land, and trees. It's about getting the biggest cacao harvest with the least amount of labor, land, and trees. 
+
+So, a more efficient farmer can produce more cacao using the same amount of inputs In other words, An efficient farmer can either:
+
+- Produce more cacao using the same resources.
+
+- Maintain the same production level with fewer resources.
+
+\
+\
+
+::::{.cr-section layout="overlay-center"}
+Efficiency is relative and depends on who we compare it to.
+::::
+
+::::{.cr-section layout="sidebar-left"}
+
+::: {#cr-fig_4_1}
+```{r fig_4_1}
+#| output: 'asis'
+#| # fig-asp: 1.2
+#| warning: false
+
+knitr::include_graphics("./pics/eff_model_4_1.svg")
+
+```
+:::
+
+We can represent the efficiency levels of cacao farmers as follows: \
+\
+Each [**dot**]{style="color:#81B29A;"} represents a farmer. @cr-fig_4_1
+
+::: {#cr-fig_4_2}
+```{r fig_4_2}
+#| output: 'asis'
+#| # fig-asp: 1.2
+#| warning: false
+
+knitr::include_graphics("./pics/eff_model_4_2.svg")
+```
+:::
+
+The [**most efficient farmers**]{style="color:#E07A5F;"} are on the right side of the graph and the [**least efficient farmers**]{style="color:#CFC16B;"} are on the left side. @cr-fig_4_2
+
+::: {#cr-fig_4_3}
+```{r fig_4_3}
+#| output: 'asis'
+#| # fig-asp: 1.2
+#| warning: false
+
+knitr::include_graphics("./pics/eff_model_4_3.svg")
+```
+:::
+
+For example, a cacao farmer represented by the [**blue dot**]{style="color:#3D405B;"} produces half as much as a farmer represented by the [**red dot**]{style="color:#E07A5F;"} using the same amount of land, trees and labor. @cr-fig_4_3
+
+::: {#cr-fig_4_4}
+```{r fig_4_4}
+#| output: 'asis'
+#| # fig-asp: 1.2
+#| warning: false
+
+knitr::include_graphics("./pics/eff_model_4_4.svg")
+```
+:::
+
+The distribution of cacao farmers with respect to their levels of efficiency shows the following: \
+\
+96.5% of cacao farmers in Ucayali showed levels of **inefficiency** in their production. \
+\
+On average, farmers can produce 3.1 times what they produce using the same amount of labor, land and cacao trees. @cr-fig_4_4
+
+3.5% of [**cacao farmers**]{style="color:#E07A5F;"} use their labor, land and cacao trees efficiently, producing 1,034 Kg of cacao per hectare, on average. @cr-fig_4_4
+
+With the same labor, land and trees they currently use, 35% of farmers can produce [**twice**]{style="color:#3D405B;"} as much. \
+\
+33% of farmers can produce [**three times**]{style="color:#F2CC8F;"} as much. \
+\
+16% can produce [**four times**]{style="color:#81B29A;"} as much as they currently produce. @cr-fig_4_4
+
+::::
+
+::::{.cr-section layout="sidebar-left"}
+:::{#cr-fig_3_1}
+```{r fig_3_1, out.width="80%"}
+#| output: 'asis'
+#| warning: false
+
+knitr::include_graphics("./pics/fig_3_1.svg")
+
+```
+:::
+
+To address problems in cacao production, farmers in [**Ucayali**]{style="color:#FED789FF;"} have adopted diverse agroecological practices. @cr-fig_3_1
+
+:::{#cr-fig_3_2}
+```{r fig_3_2, out.width="80%"}
+#| output: 'asis'
+#| warning: false
+
+knitr::include_graphics("./pics/fig_3_2.svg")
+```
+:::
+
+Farmers predominantly implement agroecological practices with **short-term** effects such as [pest and disease management]{style="color:#F8766D;"} and [weed management]{style="color:#F8766D;"}. @cr-fig_3_2
+
+Farmers expressed needs for implementing those management practices mainly in improving crop health and yield maximization. These practices are crucial to mitigate economic losses caused by biotic factors that can significantly affect their production. @cr-fig_3_2
+
+::::
+
+::::{.cr-section layout="overlay-center"}
+So, are agroecological practices efficient in terms of resource use and cacao production? \
+\
+To answer this, we compared the efficiency levels of farmers who implemented agroecological practices and non-implementer farmers. \
+\
+We selected the most frequently adopted practices for each management category. \
+\
+Below you can see density plots that illustrates the distribution of farmers across efficiency levels in cacao production.
+::::
+
+::::{.cr-section layout="sidebar-left"}
+:::{#cr-fig_weed}
+```{r fig_weed, out.width="80%"}
+#| output: 'asis'
+#| warning: false
+
+knitr::include_graphics("./pics/weed.svg")
+```
+:::
+
+**Weed management** \
+\
+Farmers [implementing]{style="color:#C1121F;"} mowing or weeding practices demonstrate lower efficiency levels in their cacao production than farmers who [do not implement]{style="color:#457B9D;"}. @cr-fig_weed
+
+**Weed management** \
+\
+This comparison highlights that the group of farmers implementing these practices is less efficient because their inefficiency level is higher (3.1), indicating greater room for improvement in optimizing input use for output maximization @cr-fig_weed
+::::
+
+::::{.cr-section layout="sidebar-left"}
+:::{#cr-fig_pest}
+```{r fig_pest, out.width="80%"}
+#| output: 'asis'
+#| warning: false
+
+knitr::include_graphics("./pics/pest.svg")
+```
+:::
+
+**Pest management** \
+\
+Farmers [implementing]{style="color:#C1121F;"} sanitatoin practices (removal of damaged or infested plants and fruits, clearing of stubbles and harvest residues, and maintenance of clean surrounding areas) demonstrate slightly higher inefficiency levels in their cacao production than [non-implementers]{style="color:#457B9D;"}. @cr-fig_pest
+
+**Pest management** \
+\
+The inneficiency level of farmers [implementing]{style="color:#C1121F;"} sanitation practices is 3.1, indicating that they could potentially triple their production using their current input levels. In contrast, [non-implementing]{style="color:#457B9D;"} farmers showed an inefficiency level of 2.8. @cr-fig_pest
+::::
+
+::::{.cr-section layout="sidebar-left"}
+:::{#cr-fig_fertility}
+```{r fig_fertility, out.width="80%"}
+#| output: 'asis'
+#| warning: false
+
+knitr::include_graphics("./pics/fertility.svg")
+```
+:::
+
+**Fertility management** \
+\
+Farmers who [implementing]{style="color:#C1121F;"} organic fertilizers such as manure or guano demonstrate lower inefficiency levels than [non-implementers]{style="color:#457B9D;"}. \
+\
+Specifically, farmers implementing these practices showed an inefficiency level of 2.9, suggesting a favorable association between organic fertilizer application and production efficiency. @cr-fig_fertility
+::::
+
+::::{.cr-section layout="sidebar-left"}
+:::{#cr-fig_water}
+```{r fig_water, out.width="80%"}
+#| output: 'asis'
+#| warning: false
+
+knitr::include_graphics("./pics/water.svg")
+```
+:::
+
+**Water management** \
+\
+farmers [implementing]{style="color:#C1121F;"} tree-planting or vegetation conservation practices demonstrate higher efficiency levels compared to [non-implementers]{style="color:#457B9D;"}. \
+\
+Specifically, farmers adopting these practices showed an average inefficiency level of 2.8, indicating potential to increase their production by 2.8 times while maintaining current input levels. @cr-fig_water
+
+::::

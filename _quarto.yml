@@ -1,0 +1,15 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: "Agroecology in Peru"
+  image: preview.png
+  twitter-card: true
+  open-graph: true
+
+format:
+  html:
+    page-layout: full
+    css: custom.css
+

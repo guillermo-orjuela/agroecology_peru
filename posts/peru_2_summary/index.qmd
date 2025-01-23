@@ -1,0 +1,35 @@
+---
+title: "Non technical research summary"
+subtitle: ""
+author: 
+  - name: "Guillermo Orjuela Ramirez"
+    url: 
+    affiliation: Alliance Bioversity and CIAT
+    affiliation_url: https://alliancebioversityciat.org/
+date: 12/14/2024 
+date-format: "MMMM, YYYY"
+lang: en
+image: pics/featured.jpg
+execute: 
+  eval: true
+  echo: false
+  warning: false
+freeze: true
+format:
+  closeread-html:
+    css: story_peru_research_summ.css
+    cr-style:
+      narrative-background-color-sidebar: "#000000"
+      narrative-text-color-sidebar: "#000000"
+      section-background-color: "#FFFFFF"
+      narrative-font-size: 14pt
+      narrative-font-family: Roboto
+    remove-header-space: false
+    debug-mode: false
+    embed-resources: true
+    linkcolor: tomato
+---
+
+This is the non technical research summary describing the main results on the efficiency of agroecological practices in cacao production in Ucayali, Peru.
+
+You can take a look here: [non technical research summary](https://hdl.handle.net/10568/169218)

@@ -1,0 +1,25 @@
+---
+title: "Efficiency of Agroecological Practices in Peruvian Cacao Farming"
+listing:
+  contents: posts
+  type: grid
+  sort: "date desc"
+  categories: false
+format:
+  html: 
+    linkcolor: tomato
+---
+
+This research provides evidence on the efficiency of agroecological practices implemented by cacao farmers in Peru's Ucayali region.We conducted our study in 2024, examining 654 cacao producers using the ["Agroecological practices characterization survey"](https://hdl.handle.net/10568/139817) of the [CGIAR Initiative on Agroecology](https://www.cgiar.org/initiative/agroecology/). Our main goal was to examine the efficiency of these farmers in terms of their available resources to produce cacao while implementing, or not, diverse agroecological practices
+
+To make our findings accessible to different audiences, we have presented the results in two distinct formats:
+
+**The Storytelling Format:**
+
+This presentation style makes our scientific findings accessible to a general audience. We have structured the information in a narrative way, helping readers understand the connections between farming practices, efficiency, and agroecology practices. Through clear explanations and visual representations, we show how different agroecological practices are related to cacao production.
+
+**The Non-Technical Research Summary:**
+
+This format is specifically designed for decision makers who need clear, actionable information. We present key findings concisely and include specific policy recommendations based on our research. This summary helps policymakers understand the practical implications of our findings and how they might inform agricultural policy.
+
+Each format serves a unique purpose: the storytelling approach helps build understanding of the science behind agroecological practices, while the summary format guides policy decisions that could improve cacao farming practices in the region.
